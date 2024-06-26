@@ -16,11 +16,11 @@ include_once "./Controller/conexao.php";
             <section id="A">
                 <form method="post" action="./Controller/venda.php" class="form-container">
                     <div class="form-group">
-                        <label for="data_venda">Data da Venda</label>
+                        <label for="data_venda">Data</label>
                         <input type="date" class="form-control" name="data_venda" id="data_venda" value="<?php echo date('Y-m-d'); ?>">
                     </div>
                     <div class="form-group">
-                        <label for="numero_da_venda">Número da Venda</label>
+                        <label for="numero_da_venda">Pedido</label>
                         <input type="text" class="form-control" name="numero_da_venda" id="numero_da_venda" placeholder="Número da Venda..." required>
                     </div>
                     <div class="form-group">
@@ -63,12 +63,12 @@ include_once "./Controller/conexao.php";
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Data da Venda</th>
-                                <th>Número da Venda</th>
+                                <th>Data</th>
+                                <th>Pedido</th>
                                 <th>Cliente</th>
                                 <th>Produto</th>
-                                <th>Quantidade da Venda</th>
-                                <th>Valor da Venda</th>
+                                <th>Quantidade</th>
+                                <th>Valor</th>
                             </tr>
                         </thead>
                         <tbody>

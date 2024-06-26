@@ -10,37 +10,36 @@
 </head>
 <body>
     <div id="main-container" class="flex-container">
-            <div id="caixa1">
-                <section>
-                    <form method="post" action="item.php" class="form-container">
-                        <div class="form-group">
-                            <label for="codigo_produto">Código do Produto</label>
-                            <input type="text" class="form-control" name="codigo_produto" placeholder="Código do Produto..." required>
-                        </div>
-                        <div class="form-group">
-                            <label for="nome">Nome</label>
-                            <input type="text" class="form-control" name="nome" placeholder="Nome do Produto..." required>
-                        </div>
-                        <div class="form-group">
-                            <label for="tipo">Tipo do Produto</label>
-                            <input type="text" class="form-control" name="tipo" placeholder="Tipo do Produto...">
-                        </div>
-                        <div class="form-group">
-                            <label for="marca">Marca</label>
-                            <input type="text" class="form-control" name="marca" placeholder="Marca do Produto...">
-                        </div>
-                        <div class="form-group">
-                            <label for="modelo">Modelo</label>
-                            <input type="text" class="form-control" name="modelo" placeholder="Modelo do Produto...">
-                        </div>
-                        <div class="buttons-container">
-                            <button type="submit" class="alinhaBtns">Registrar Item</button>
-                           
-                        </div>
-                    </form>
-                </section>
-            </div>
-    
+        <div id="caixa1">
+            <section>
+                <form method="post" action="item.php" class="form-container">
+                    <div class="form-group">
+                        <label for="codigo_produto">Código</label>
+                        <input type="text" class="form-control" name="codigo_produto" placeholder="Código do Produto..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" class="form-control" name="nome" placeholder="Nome do Produto..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo">Tipo</label>
+                        <input type="text" class="form-control" name="tipo" placeholder="Tipo do Produto...">
+                    </div>
+                    <div class="form-group">
+                        <label for="marca">Marca</label>
+                        <input type="text" class="form-control" name="marca" placeholder="Marca do Produto...">
+                    </div>
+                    <div class="form-group">
+                        <label for="modelo">Modelo</label>
+                        <input type="text" class="form-control" name="modelo" placeholder="Modelo do Produto...">
+                    </div>
+                    <div class="buttons-container">
+                        <button type="submit" class="alinhaBtns">Registrar Item</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+        
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             include "./Controller/item.php";
@@ -50,11 +49,11 @@
         <div id="caixa2">
             <section>
                 <div class="table-container">
-                    <h2>Itens em Estoque</h2>
+                    <h2>Produtos</h2>
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Código do Produto</th>
+                                <th>Código</th>
                                 <th>Nome</th>
                                 <th>Tipo</th>
                                 <th>Marca</th>

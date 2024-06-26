@@ -29,8 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                            VALUES ('$data_compra', '$numero_da_compra', '$fornecedor', '$codigo_produto_compra', $quantidade, $valor)";
 
             if (mysqli_query($Link, $sql_compra)) {
-                // Atualizar quantidade e valor na tabela item
-                $sql_atualiza_item = "UPDATE item SET quantidade = quantidade + $quantidade, valor = $valor 
+                // Atualizar quantidade na tabela item
+                $sql_atualiza_item = "UPDATE item SET quantidade = COALESCE(quantidade, 0) + $quantidade, valor = $valor 
                                       WHERE codigo_produto = '$codigo_produto_compra'";
                 if (mysqli_query($Link, $sql_atualiza_item)) {
                     echo "<script>

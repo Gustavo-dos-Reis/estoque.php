@@ -19,7 +19,7 @@
                     <input type="date" class="form-control" name="data_compra" id="data_compra" value="<?php echo date('Y-m-d'); ?>">
                 </div>
                 <div class="form-group">
-                    <label for="numero_da_compra">Numero da Compra</label>
+                    <label for="numero_da_compra">Pedido de Compra</label>
                     <input type="text" class="form-control" name="numero_da_compra" id="numero_da_compra" placeholder="Número da Compra..." required>
                 </div>
                 <div class="form-group">
@@ -27,7 +27,7 @@
                     <input type="text" class="form-control" name="fornecedor" id="fornecedor" placeholder="Fornecedor..." required>
                 </div>
                 <div class="form-group">
-                    <label for="codigo_produto_compra">Código da Compra</label>
+                    <label for="codigo_produto_compra">Produto</label>
                     <select class="form-control" name="codigo_produto_compra" id="codigo_produto_compra" required>
                         <option value="">Selecione o Código do Produto...</option>
                         <?php
@@ -40,11 +40,11 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="quantidade">Quantidade da Compra</label>
+                    <label for="quantidade">Quantidade</label>
                     <input type="number" class="form-control" name="quantidade" id="quantidade" placeholder="Quantidade..." required>
                 </div>
                 <div class="form-group">
-                    <label for="valor">Valor da Compra</label>
+                    <label for="valor">Valor</label>
                     <input type="number" class="form-control" name="valor" id="valor" placeholder="Valor..." step="0.01" required>
                 </div>
                 <div class="buttons-container">
