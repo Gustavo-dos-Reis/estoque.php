@@ -44,10 +44,3 @@ header{
     transition: 0.3s;
 }
 
-footer {
-    background-color:rgb(75, 91, 112);
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-    font:normal 20pt Arial;
-}

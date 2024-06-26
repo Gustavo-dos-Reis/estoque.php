@@ -6,40 +6,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciamento de Estoque</title>
+    <title>Compras</title>
     <link rel="stylesheet" href="./css/estoque.css">
 </head>
 <body>
-    <header>
-        <h1>Compras</h1>            
-    </header>
     <div id="main-container" class="flex-container">
         <div id="caixa1">
             <section id="A">
             <form method="post" action="./controller/compra.php" class="form-container">
                 <div class="form-group">
-                    <input type="date" class="form-control" name="data_compra" id="data_compra" value="<?php echo date('Y-m-d'); ?>" placeholder="Data da Compra...">
+                    <label for="data_compra">Data da Compra</label>
+                    <input type="date" class="form-control" name="data_compra" id="data_compra" value="<?php echo date('Y-m-d'); ?>">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="numero_da_compra" id="numero_da_compra" placeholder="Número da Compra...">
+                    <label for="numero_da_compra">Numero da Compra</label>
+                    <input type="text" class="form-control" name="numero_da_compra" id="numero_da_compra" placeholder="Número da Compra..." required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="fornecedor" id="fornecedor" placeholder="Fornecedor...">
+                    <label for="fornecedor">Fornecedor</label>
+                    <input type="text" class="form-control" name="fornecedor" id="fornecedor" placeholder="Fornecedor..." required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="codigo_produto_compra" id="codigo_produto_compra" placeholder="Código do Produto...">
+                    <label for="codigo_produto_compra">Código da Compra</label>
+                    <select class="form-control" name="codigo_produto_compra" id="codigo_produto_compra" required>
+                        <option value="">Selecione o Código do Produto...</option>
+                        <?php
+                            $sql = "SELECT codigo_produto, nome FROM item";
+                            $result = mysqli_query($Link, $sql);
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo "<option value='{$row['codigo_produto']}'>{$row['codigo_produto']} - {$row['nome']}</option>";
+                            }
+                        ?>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <input type="number" class="form-control" name="quantidade" id="quantidade" placeholder="Quantidade...">
+                    <label for="quantidade">Quantidade da Compra</label>
+                    <input type="number" class="form-control" name="quantidade" id="quantidade" placeholder="Quantidade..." required>
                 </div>
                 <div class="form-group">
-                    <input type="number" class="form-control" name="valor" id="valor" placeholder="Valor...">
+                    <label for="valor">Valor da Compra</label>
+                    <input type="number" class="form-control" name="valor" id="valor" placeholder="Valor..." step="0.01" required>
                 </div>
                 <div class="buttons-container">
-                    <button type="submit" class="btn btn-primary form-control alinhaBtns">Comprar</button>
-                    <input type="button" class="alinhaBtns" value="Ver Estoque" onclick="window.open('item.php','_self')">
-                    <input type="button" class="alinhaBtns" value="Ver Saída" onclick="window.open('venda.php','_self')">
-                    <input type="button" class="alinhaBtns" value="Voltar ao Menu" onclick="window.open('index.html','_self')">
+                    <button type="submit" class="alinhaBtns">Comprar</button>
                 </div>
             </form>
             </section>
@@ -79,6 +88,11 @@
                             ?>
                         </tbody>
                     </table>
+                </div>
+                <div class="buttons-container-btns">
+                    <input type="button" class="Btns" value="Estoque" onclick="window.open('item.php','_self')">
+                    <input type="button" class="Btns" value="Vendas" onclick="window.open('venda.php','_self')">
+                    <input type="button" class="Btns" value="Menu" onclick="window.open('index.html','_self')">
                 </div>
             </section>
         </div>

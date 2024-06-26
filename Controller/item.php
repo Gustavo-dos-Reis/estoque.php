@@ -14,20 +14,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result_check = mysqli_query($Link, $sql_check);
 
         if (mysqli_num_rows($result_check) > 0) {
-            echo "<p>Código do produto já existe. Por favor, insira um código diferente.</p>";
+            echo "<script>
+                    alert('Código do produto já existe. Por favor, insira um código diferente.');
+                    window.location.href = 'http://localhost/Estoque/item.php';
+                  </script>";
         } else {
             // Insere o item no banco de dados
             $sql = "INSERT INTO item (codigo_produto, nome, tipo, marca, modelo) 
                     VALUES ('$codigo_produto', '$nome', '$tipo', '$marca', '$modelo')";
 
             if (mysqli_query($Link, $sql)) {
-                echo "<p>Item registrado com sucesso!</p>";
+                echo "<script>
+                        alert('Item registrado com sucesso!');
+                        window.location.href = 'http://localhost/Estoque/item.php';
+                      </script>";
             } else {
-                echo "Erro ao registrar o item: " . mysqli_error($Link);
+                echo "<script>
+                        alert('Erro ao registrar o item: " . mysqli_error($Link) . "');
+                        window.location.href = 'http://localhost/Estoque/item.php';
+                      </script>";
             }
         }
     } else {
-        echo "Por favor, preencha todos os campos obrigatórios.";
+        echo "<script>
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                window.location.href = 'http://localhost/Estoque/item.php';
+              </script>";
     }
 }
+
 ?>

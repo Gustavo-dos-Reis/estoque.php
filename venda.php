@@ -7,20 +7,17 @@ include_once "./Controller/conexao.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciamento de Estoque</title>
-    <link rel="stylesheet" href="./css/saida.css">
+    <title>Vendas</title>
+    <link rel="stylesheet" href="./css/estoque.css">
 </head>
 <body>
-    <header>
-        <h1>Vendas</h1>            
-    </header>
     <div id="main-container" class="flex-container">
         <div id="caixa1">
             <section id="A">
                 <form method="post" action="./Controller/venda.php" class="form-container">
                     <div class="form-group">
                         <label for="data_venda">Data da Venda</label>
-                        <input type="date" class="form-control" name="data_venda" id="data_venda" required>
+                        <input type="date" class="form-control" name="data_venda" id="data_venda" value="<?php echo date('Y-m-d'); ?>">
                     </div>
                     <div class="form-group">
                         <label for="numero_da_venda">Número da Venda</label>
@@ -52,9 +49,8 @@ include_once "./Controller/conexao.php";
                         <input type="number" step="0.01" class="form-control" name="valor" id="valor" placeholder="Valor..." required>
                     </div>
                     <div class="buttons-container">
-                        <button type="submit" class="btn btn-primary form-control alinhaBtns">Registrar Venda</button>
-                        <input type="button" class="alinhaBtns" value="Ver Estoque" onclick="window.open('item.php','_self')">
-                        <input type="button" class="alinhaBtns" value="Voltar ao Menu" onclick="window.open('index.html','_self')">
+                        <button type="submit" class="alinhaBtns">Registrar Venda</button>
+                       
                     </div>
                 </form>
             </section>
@@ -94,6 +90,11 @@ include_once "./Controller/conexao.php";
                             ?>
                         </tbody>
                     </table>
+                </div>
+                <div class="buttons-container-btns">
+                    <input type="button" class="Btns" value="Estoque" onclick="window.open('item.php','_self')">  
+                    <input type="button" class="Btns" value="Compras" onclick="window.open('compra.php','_self')">
+                    <input type="button" class="Btns" value="Menu" onclick="window.open('index.html','_self')">
                 </div>
             </section>
         </div>

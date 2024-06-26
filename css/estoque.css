@@ -89,6 +89,32 @@ header {
     color: black;
 }
 
+.Btns {
+    border: none;
+    width: auto; /* Permitir que o tamanho seja automático */
+    height: 30px; /* Altura menor para os botões */
+    padding: 5px 10px; /* Adicionar algum espaçamento interno */
+    cursor: pointer;
+    background-color: rgb(70, 142, 236);
+    color: white;
+    border-radius: 10px; /* Raio de borda menor para um botão menor */
+    transition: 0.3s;
+    margin: 5px; /* Espaço entre os botões */
+}
+
+.Btns:hover {
+    border: 1px solid black;
+    background-color: rgb(0, 247, 255);
+    color: black;
+}
+
+/* Estilo para colocar os botões lado a lado */
+.buttons-container-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Espaço entre os botões */
+}
+
 .table-container {
     width: 100%;
     max-height: 500px;
@@ -96,6 +122,16 @@ header {
     background-color: #ffffff;
     border-radius: 8px;
     position: relative; /* Para permitir a posição sticky do thead */
+}
+
+.table-container h2 {
+    background-color: #ffffff; /* Mesma cor de fundo que o thead */
+    position: sticky;
+    top: 0;
+    z-index: 20; /* Certificar-se de que o z-index seja maior que o thead */
+    margin: 0; /* Remover a margem padrão */
+    padding: 0.75rem; /* Adicionar padding similar ao th */
+    border-bottom: 2px solid #dee2e6; /* Adicionar uma borda inferior similar ao th */
 }
 
 .table {
@@ -116,7 +152,7 @@ header {
     border-bottom: 2px solid #dee2e6;
     background-color: #ffffff;
     position: sticky;
-    top: 0;
+    top: 3.5rem; /* Ajuste para ficar abaixo do h2 */
     z-index: 10;
 }
 
@@ -130,12 +166,4 @@ header {
 
 .table-hover tbody tr:hover {
     background-color: #f5f5f5;
-}
-
-footer {
-    background-color: rgb(75, 91, 112);
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-    font: normal 20pt Arial;
 }
