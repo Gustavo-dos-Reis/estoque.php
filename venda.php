@@ -1,6 +1,4 @@
-<?php 
-include_once "./Controller/conexao.php";
-?>
+<?php include_once "./Controller/conexao.php"; ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -50,7 +48,6 @@ include_once "./Controller/conexao.php";
                     </div>
                     <div class="buttons-container">
                         <button type="submit" class="alinhaBtns">Registrar Venda</button>
-                       
                     </div>
                 </form>
             </section>
@@ -73,12 +70,13 @@ include_once "./Controller/conexao.php";
                         </thead>
                         <tbody>
                             <?php
-                                $sql = "SELECT data_venda, numero_da_venda, cliente, produto, quantidade, valor FROM venda";
+                                $sql = "SELECT data_venda, numero_da_venda, cliente, produto, quantidade, valor FROM venda ORDER BY id DESC";
                                 $result = mysqli_query($Link, $sql);
                                 while ($row = mysqli_fetch_assoc($result)){
+                                    $data_venda = date("d/m/Y", strtotime($row['data_venda']));
                                     echo "
                                         <tr class='table-light'>
-                                            <td>{$row['data_venda']}</td>
+                                            <td>{$data_venda}</td>
                                             <td>{$row['numero_da_venda']}</td>
                                             <td>{$row['cliente']}</td>
                                             <td>{$row['produto']}</td>
@@ -92,12 +90,10 @@ include_once "./Controller/conexao.php";
                     </table>
                 </div>
                 <div class="buttons-container-btns">
-                    <input type="button" class="Btns" value="Estoque" onclick="window.open('item.php','_self')">  
-                    <input type="button" class="Btns" value="Compras" onclick="window.open('compra.php','_self')">
-                    <input type="button" class="Btns" value="Menu" onclick="window.open('index.html','_self')">
+                    <input type="button" class="Btns" value="Voltar" onclick="window.open('index.html','_self')">
                 </div>
             </section>
         </div>
-    </div>
+    </div>   
 </body>
 </html>

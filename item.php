@@ -64,7 +64,7 @@
                         </thead>
                         <tbody>
                             <?php
-                                $sql = "SELECT codigo_produto, nome, tipo, marca, modelo, quantidade, valor FROM item";
+                                $sql = "SELECT codigo_produto, nome, tipo, marca, modelo, quantidade, valor FROM item ORDER BY id DESC";
                                 $result = mysqli_query($Link, $sql);
                                 while ($row = mysqli_fetch_assoc($result)){
                                     echo "
@@ -84,12 +84,10 @@
                     </table>
                 </div>
                 <div class="buttons-container-btns">
-                    <input type="button" class="Btns" value="Menu" onclick="window.open('index.html',  '_self')">
-                    <input type="button" class="Btns" value="Compras" onclick="window.open('compra.php',   '_self')">
-                    <input type="button" class="Btns" value="Vendas" onclick="window.open('venda.php', '_self')">
+                    <input type="button" class="Btns" value="Voltar" onclick="window.open('index.html','_self')">
                 </div>
             </section>
         </div>
-    </div>
+    </div> 
 </body>
 </html>

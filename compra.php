@@ -71,12 +71,13 @@
                         </thead>
                         <tbody>
                             <?php
-                                $sql = "SELECT * FROM compra";
+                                $sql = "SELECT * FROM compra ORDER BY data_compra DESC";
                                 $pesquisar = mysqli_query($Link, $sql);
                                 while ($linha = $pesquisar->fetch_assoc()) {
+                                    $data_compra = date('d/m/Y', strtotime($linha['data_compra']));
                                     echo "
                                         <tr class='table-light'>
-                                            <td>".$linha['data_compra']."</td>
+                                            <td>".$data_compra."</td>
                                             <td>".$linha['numero_da_compra']."</td>
                                             <td>".$linha['fornecedor']."</td>
                                             <td>".$linha['codigo_produto_compra']."</td>
@@ -90,9 +91,7 @@
                     </table>
                 </div>
                 <div class="buttons-container-btns">
-                    <input type="button" class="Btns" value="Estoque" onclick="window.open('item.php','_self')">
-                    <input type="button" class="Btns" value="Vendas" onclick="window.open('venda.php','_self')">
-                    <input type="button" class="Btns" value="Menu" onclick="window.open('index.html','_self')">
+                    <input type="button" class="Btns" value="Voltar" onclick="window.open('index.html','_self')">
                 </div>
             </section>
         </div>

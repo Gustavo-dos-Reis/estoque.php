@@ -9,6 +9,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $quantidade = $_POST['quantidade'];
     $valor = $_POST['valor'];
 
+    // Sanitize inputs
+    $data_compra = mysqli_real_escape_string($Link, $data_compra);
+    $numero_da_compra = mysqli_real_escape_string($Link, $numero_da_compra);
+    $fornecedor = mysqli_real_escape_string($Link, $fornecedor);
+    $codigo_produto_compra = mysqli_real_escape_string($Link, $codigo_produto_compra);
+    $quantidade = filter_var($quantidade, FILTER_VALIDATE_INT);
+    $valor = filter_var($valor, FILTER_VALIDATE_FLOAT);
+
+    if ($quantidade === false || $valor === false) {
+        echo "<script>
+                alert('Quantidade ou valor inválido.');
+                window.location.href = 'http://localhost/Estoque/compra.php';
+              </script>";
+        exit();
+    }
+
     // Verificar se o código do produto existe na tabela item
     $sql_verifica_produto = "SELECT * FROM item WHERE codigo_produto = '$codigo_produto_compra'";
     $resultado_verifica = mysqli_query($Link, $sql_verifica_produto);
@@ -44,10 +60,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                           </script>";
                 }
             } else {
-                echo "<script>
-                        alert('Erro ao registrar a compra: " . mysqli_error($Link) . "');
-                        window.location.href = 'http://localhost/Estoque/compra.php';
-                      </script>";
+                $error_message = mysqli_error($Link);
+                if (strpos($error_message, "Out of range value for column 'quantidade'") !== false) {
+                    echo "<script>
+                            alert('Erro ao registrar a compra: Valor fora do intervalo permitido para a quantidade.');
+                            window.location.href = 'http://localhost/Estoque/compra.php';
+                          </script>";
+                } else {
+                    echo "<script>
+                            alert('Erro ao registrar a compra: " . $error_message . "');
+                            window.location.href = 'http://localhost/Estoque/compra.php';
+                          </script>";
+                }
             }
         }
     } else {

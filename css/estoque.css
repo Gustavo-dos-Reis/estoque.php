@@ -91,15 +91,15 @@ header {
 
 .Btns {
     border: none;
-    width: auto; /* Permitir que o tamanho seja automático */
-    height: 30px; /* Altura menor para os botões */
-    padding: 5px 10px; /* Adicionar algum espaçamento interno */
+    width: auto;
+    height: 30px;
+    padding: 5px 10px;
     cursor: pointer;
     background-color: rgb(70, 142, 236);
     color: white;
-    border-radius: 10px; /* Raio de borda menor para um botão menor */
+    border-radius: 10px;
     transition: 0.3s;
-    margin: 5px; /* Espaço entre os botões */
+    margin: 5px;
 }
 
 .Btns:hover {
@@ -108,30 +108,39 @@ header {
     color: black;
 }
 
-/* Estilo para colocar os botões lado a lado */
 .buttons-container-btns {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px; /* Espaço entre os botões */
+    gap: 10px;
 }
 
 .table-container {
     width: 100%;
     max-height: 500px;
-    overflow-y: auto;
+    overflow: auto;
     background-color: #ffffff;
     border-radius: 8px;
-    position: relative; /* Para permitir a posição sticky do thead */
+    position: relative;
 }
 
 .table-container h2 {
-    background-color: #ffffff; /* Mesma cor de fundo que o thead */
     position: sticky;
     top: 0;
-    z-index: 20; /* Certificar-se de que o z-index seja maior que o thead */
-    margin: 0; /* Remover a margem padrão */
-    padding: 0.75rem; /* Adicionar padding similar ao th */
-    border-bottom: 2px solid #dee2e6; /* Adicionar uma borda inferior similar ao th */
+    left: 0; 
+    width: 100%;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+    z-index: 2;
+}
+
+.table thead {
+    position: sticky;
+    top: 40px; /* Ajuste para corresponder à altura do h2 */
+    background-color: #ffffff;
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+    z-index: 1;
 }
 
 .table {
@@ -142,7 +151,7 @@ header {
 }
 
 .table th, .table td {
-    padding: 0.75rem;
+    padding: 0.5rem;
     vertical-align: top;
     border-top: 1px solid #dee2e6;
 }
@@ -151,19 +160,23 @@ header {
     vertical-align: bottom;
     border-bottom: 2px solid #dee2e6;
     background-color: #ffffff;
-    position: sticky;
-    top: 3.5rem; /* Ajuste para ficar abaixo do h2 */
-    z-index: 10;
 }
 
 .table tbody + tbody {
     border-top: 2px solid #dee2e6;
 }
 
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
 .table-light {
+    color: #212529;
     background-color: #f8f9fa;
 }
 
-.table-hover tbody tr:hover {
-    background-color: #f5f5f5;
+.table-light th,
+.table-light td,
+.table-light thead th {
+    border-color: #dee2e6;
 }
