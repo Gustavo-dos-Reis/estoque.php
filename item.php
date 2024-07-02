@@ -60,11 +60,12 @@
                                 <th>Modelo</th>
                                 <th>Quantidade</th>
                                 <th>Valor</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                                $sql = "SELECT codigo_produto, nome, tipo, marca, modelo, quantidade, valor FROM item ORDER BY id DESC";
+                                $sql = "SELECT id, codigo_produto, nome, tipo, marca, modelo, quantidade, valor FROM item ORDER BY id DESC";
                                 $result = mysqli_query($Link, $sql);
                                 while ($row = mysqli_fetch_assoc($result)){
                                     echo "
@@ -76,6 +77,12 @@
                                             <td>{$row['modelo']}</td>
                                             <td>{$row['quantidade']}</td>
                                             <td>{$row['valor']}</td>
+                                            <td>
+                                                <form method='post' action='./controller/excluir_item.php' onsubmit='return confirm(\"Deseja realmente excluir este item?\");'>
+                                                    <input type='hidden' name='id' value='{$row['id']}'>
+                                                    <button type='submit' class='btnExcluir'>Excluir</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     ";
                                 }

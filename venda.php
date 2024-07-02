@@ -30,7 +30,7 @@
                         <select class="form-control" name="produto_id" id="produto_id" required>
                             <option value="">Selecione o Produto...</option>
                             <?php
-                                $sql = "SELECT * FROM item";
+                                $sql = "SELECT id, nome FROM item";
                                 $result = mysqli_query($Link, $sql);
                                 while($row = mysqli_fetch_assoc($result)) {
                                     echo "<option value='{$row['id']}'>{$row['nome']}</option>";
@@ -66,11 +66,12 @@
                                 <th>Produto</th>
                                 <th>Quantidade</th>
                                 <th>Valor</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                                $sql = "SELECT data_venda, numero_da_venda, cliente, produto, quantidade, valor FROM venda ORDER BY id DESC";
+                                $sql = "SELECT id, data_venda, numero_da_venda, cliente, produto, quantidade, valor FROM venda ORDER BY id DESC";
                                 $result = mysqli_query($Link, $sql);
                                 while ($row = mysqli_fetch_assoc($result)){
                                     $data_venda = date("d/m/Y", strtotime($row['data_venda']));
@@ -82,6 +83,12 @@
                                             <td>{$row['produto']}</td>
                                             <td>{$row['quantidade']}</td>
                                             <td>{$row['valor']}</td>
+                                            <td>
+                                                <form method='post' action='./controller/excluir_venda.php' onsubmit='return confirm(\"Deseja realmente excluir esta venda?\");'>
+                                                    <input type='hidden' name='id' value='{$row['id']}'>
+                                                    <button type='submit' class='btnExcluir'>Excluir</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     ";
                                 }
