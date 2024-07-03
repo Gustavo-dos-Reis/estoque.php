@@ -1,6 +1,14 @@
 <?php
 include_once "conexao.php";
 
+function showError($message) {
+    echo "<script>
+            alert('$message');
+            window.history.back();
+          </script>";
+    exit();
+}
+
 if (isset($_POST['id'])) {
     $id = $_POST['id'];
     
@@ -14,15 +22,15 @@ if (isset($_POST['id'])) {
         if ($result) {
             header('Location: ../item.php');
         } else {
-            die("Erro ao excluir o item: " . mysqli_error($Link));
+            showError("Erro ao excluir o item: " . mysqli_error($Link));
         }
         
         mysqli_stmt_close($stmt);
     } else {
-        die("Erro ao preparar a consulta: " . mysqli_error($Link));
+        showError("Erro ao preparar a consulta: " . mysqli_error($Link));
     }
 } else {
-    die("ID do item não fornecido.");
+    showError("ID do item não fornecido.");
 }
 
 mysqli_close($Link);
